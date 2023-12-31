@@ -88,7 +88,7 @@
             <hr style="margin-top:0px">
             <!-- <h6 style="color:#8899a5"> Repaint123 crafts 3D content from a single image, matching 2D generation quality in just <strong>2 minutes</strong>. </h6> -->
             
-            <img src="assets/grabs.pdf" alt="grab" width="90%">
+            <img src="assets/grabs.png" alt="grab" width="90%">
             <br>
             <br>
             <!-- <h6 style="color:#8899a5"> SyncDreamer is able to directly generate multiview consistent images, which allows 3D reconstruction by NeuS or NeRF without SDS loss. </h6> -->
@@ -119,7 +119,7 @@
   </section>
   <br>
   
-   <!-- abstract -->
+   <!-- dataset -->
    <section>
     <div class="container">
       <div class="row">
@@ -165,13 +165,47 @@
   </section>
   <br>
 
+   <!-- <Method> -->
+   <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Method</h3>
+          <!-- <hr style="width:100%;height:0.7px;background-color:rgba(0, 0, 0, 0.665);margin-top:1em">
+             Create high-fidelity 3D object mesh from a single image in <strong>5 SECONDS</strong>. -->
+            <hr style="margin-top:0px">
+            <!-- <h6 style="color:#8899a5"> Repaint123 crafts 3D content from a single image, matching 2D generation quality in just <strong>2 minutes</strong>. </h6> -->
+
+            <br>
+          
+          <p class="text-left">
+            We propose to use detailed action descriptions as the textual input. Specifically, we first pre-define textural descriptions for the problem behavior classes by searching on the web and publications, as listed in Table~\ref{description}. During training, when the visual branch, i.e., Video Swin Transformer, takes as input a specific category of video (e.g., a ``head banging" action video), the corresponding action category description will be first tokenized into a language input tensor, and then the text encoder will encode the language input to a language feature.
+          </p>  
+          <img src="assets/text_tab.png" alt="grab" width="90%">
+          <br>
+
+          <p class="text-left">
+            In this work,  we utilize the CLIP~\cite{radford2021learning} (Contrastive Language-Image Pretraining) text encoder as our text encoder. The original CLIP model consists of an image Transformer encoder and a text Transformer encoder and is trained on a large-scale image-text pairs dataset. The supervision contained in the natural language provides strong cross-modal representation ability for both CLIP encoders. In our work, in order to introduce additional supervision without bringing in extra annotations, we utilize the abundant image-text knowledge in the CLIP text encoder. As shown in Figure~\ref{vl}, since the language feature from the text encoder actually contains sufficient corresponding visual information, we propose to minimize the distance between the visual feature from the Video Swin Transformer and the language feature in the feature space for the input visual and text pair (i.e., input video and its corresponding action category description). With such a strategy, the additional language knowledge is actually distilled into the visual branch, introducing more information for the recognition task and making the language feature more predictable.          </p>  
+          <img src="assets/framework.png" alt="grab" width="90%">
+          <br>
+
+        <p class="text-center">
+          <!-- Reverse process of SyncDreamer's multiview diffusion. -->
+          <!-- Overview of Our Repaint123. -->
+        </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
   <section>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-            <h3>Comparison</h3>
+            <h3>Method</h3>
             <hr style="margin-top:0px">
-            <p>Repaint123 generates high-quality and view-consistent 3D objects from a single unposed image. </p>
+            <!-- <p>Repaint123 generates high-quality and view-consistent 3D objects from a single unposed image. </p> -->
 
             <!-- <hr style="margin-top:0px">
             <video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
