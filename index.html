@@ -139,7 +139,7 @@
           <p class="text-left">
             There are two popular autism behavior datasets: Self-Stimulatory Behavior Dataset (SSBD) and Expanded Stereotype Behavior Dataset (ESBD). SSBD contains 75 videos of stimming actions of children with autism spectrum disorder with an average duration of 90 seconds per video. These videos were recorded in uncontrolled natural settings by parents/caregivers. SSBD contains three typical action classes: Arm Flapping, Head Banging, and Spinning. Arm Flapping is a stimming behavior when autistic children cannot normally communicate with people around them or they have excessive energy. Head banging is typically a self-injurious action where children will use their own hands to hit on the head or just directly hit other solid objects (e.g., desks and walls) with their heads. Spinning is also a stimming behavior that the children often turn around their whole body repeatedly. Each category includes 25 video samples, but some video URLs are no longer available, and we only obtain 59 videos: 19 for Arm flapping and 20 for both Head banging and Spinning. The second dataset ESBD contains 99 YouTube videos, and the average video duration is about 2 minutes. Besides the three categories of SSBD, ESBD also includes the fourth category of Hand Action; thus ESBD contains  35 videos for Arm flapping, 13 videos for Hand action, 24 videos for Head banging, and 37 videos for Spinning. Note that hand action and arm flapping are different, hand action focuses more on the finger actions and can describe more actions than arm flapping. Similar to SSBD, due to poor maintenance, we only obtained 89 videos of ESBD, namely 29 videos for Arm flapping, 13 videos for Hand action, 16 videos for Head banging, and 31 videos for Spinning. 
           </p>
-          <img src="assets/samples.png" alt="Overview" width="80%">
+          <img src="assets/samples.png" alt="samples" width="80%">
           <br>
 
           <!-- <p class="text-left">
@@ -149,7 +149,7 @@
           <p class="text-left">
             These two datasets are noisy and contain a large portion of the background or other subjects. To enhance recognition accuracy, we first preprocess the videos to obtain cleaner data that include target children performing ASD behaviors only. To this end, we leverage one of the most popular object detection models YOLOv5, which is pretrained on the COCO dataset, as our target child detector (i.e., person detector). With the help of YOLOv5, we obtain the cropped frames of the target children and behaviors. As presented in Figure~\ref{preprocess}, the cropped frame is much more focused on the child region than the raw data, which leads to a more stable training process and better action recognition results. In addition, we segment each video into several 30-frame clips to extract as much information as possible, and this video segmentation setting also increases the number of training samples. Our final training data, therefore, contains 1,437 and 1,030 clips for ESBD and SSBD, respectively.
           </p>
-          <img src="assets/preprocessing.png" alt="Overview" width="77%">
+          <img src="assets/preprocessing.png" alt="preprocess" width="77%">
           
           <!-- <video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
             <source src="video/progress_low.mp4" type="video/mp4">
@@ -181,12 +181,12 @@
           <p class="text-left">
             We propose to use detailed action descriptions as the textual input. Specifically, we first pre-define textural descriptions for the problem behavior classes by searching on the web and publications, as listed in Table~\ref{description}. During training, when the visual branch, i.e., Video Swin Transformer, takes as input a specific category of video (e.g., a ``head banging" action video), the corresponding action category description will be first tokenized into a language input tensor, and then the text encoder will encode the language input to a language feature.
           </p>  
-          <img src="assets/text_tab.png" alt="grab" width="90%">
+          <img src="assets/text_tab.png" alt="text" width="90%">
           <br>
 
           <p class="text-left">
             In this work,  we utilize the CLIP~\cite{radford2021learning} (Contrastive Language-Image Pretraining) text encoder as our text encoder. The original CLIP model consists of an image Transformer encoder and a text Transformer encoder and is trained on a large-scale image-text pairs dataset. The supervision contained in the natural language provides strong cross-modal representation ability for both CLIP encoders. In our work, in order to introduce additional supervision without bringing in extra annotations, we utilize the abundant image-text knowledge in the CLIP text encoder. As shown in Figure~\ref{vl}, since the language feature from the text encoder actually contains sufficient corresponding visual information, we propose to minimize the distance between the visual feature from the Video Swin Transformer and the language feature in the feature space for the input visual and text pair (i.e., input video and its corresponding action category description). With such a strategy, the additional language knowledge is actually distilled into the visual branch, introducing more information for the recognition task and making the language feature more predictable.          </p>  
-          <img src="assets/framework.png" alt="grab" width="90%">
+          <img src="assets/framework.png" alt="framework" width="90%">
           <br>
 
         <p class="text-center">
