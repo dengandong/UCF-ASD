@@ -46,7 +46,6 @@
                 <a href="https://klesse.utsa.edu/faculty/profiles/chen-qian.html" target="_blank">Qian Chen</a><sup>2</sup>,
                 <a href="" target="_blank">Leslie Neely</a><sup>2</sup>,
                 <a href="" target="_blank">Sakiko Oyama</a><sup>2</sup>,
-                <a href="https://yuanli2333.github.io/" target="_blank">Li Yuan</a><sup>1,2</sup></h6>
             <p>  
                 <sup>1</sup>University of Central Florida &nbsp;&nbsp;
                 <sup>2</sup>University of Texas at San Antonio &nbsp;&nbsp;
@@ -137,7 +136,7 @@
           <!-- <h3>Image-to-3D generation pipeline</h3> -->
 
           <p class="text-left">
-            There are two popular autism behavior datasets: Self-Stimulatory Behavior Dataset (SSBD) and Expanded Stereotype Behavior Dataset (ESBD). SSBD contains 75 videos of stimming actions of children with autism spectrum disorder with an average duration of 90 seconds per video. These videos were recorded in uncontrolled natural settings by parents/caregivers. SSBD contains three typical action classes: Arm Flapping, Head Banging, and Spinning. Arm Flapping is a stimming behavior when autistic children cannot normally communicate with people around them or they have excessive energy. Head banging is typically a self-injurious action where children will use their own hands to hit on the head or just directly hit other solid objects (e.g., desks and walls) with their heads. Spinning is also a stimming behavior that the children often turn around their whole body repeatedly. Each category includes 25 video samples, but some video URLs are no longer available, and we only obtain 59 videos: 19 for Arm flapping and 20 for both Head banging and Spinning. The second dataset ESBD contains 99 YouTube videos, and the average video duration is about 2 minutes. Besides the three categories of SSBD, ESBD also includes the fourth category of Hand Action; thus ESBD contains  35 videos for Arm flapping, 13 videos for Hand action, 24 videos for Head banging, and 37 videos for Spinning. Note that hand action and arm flapping are different, hand action focuses more on the finger actions and can describe more actions than arm flapping. Similar to SSBD, due to poor maintenance, we only obtained 89 videos of ESBD, namely 29 videos for Arm flapping, 13 videos for Hand action, 16 videos for Head banging, and 31 videos for Spinning. 
+            There are two popular autism behavior datasets: Self-Stimulatory Behavior Dataset (SSBD) and Expanded Stereotype Behavior Dataset (ESBD). SSBD contains 75 videos of stimming actions of children with autism spectrum disorder with an average duration of 90 seconds per video. SSBD contains three typical action classes: Arm Flapping, Head Banging, and Spinning.  The second dataset ESBD contains 99 YouTube videos, and the average video duration is about 2 minutes. Besides the three categories of SSBD, ESBD also includes the fourth category of Hand Action; thus ESBD contains  35 videos for Arm flapping, 13 videos for Hand action, 24 videos for Head banging, and 37 videos for Spinning.  
           </p>
           <img src="assets/samples.png" alt="samples" width="80%">
           <br>
@@ -147,7 +146,7 @@
         </p>
             <!-- <hr style="margin-top:0px"> -->
           <p class="text-left">
-            These two datasets are noisy and contain a large portion of the background or other subjects. To enhance recognition accuracy, we first preprocess the videos to obtain cleaner data that include target children performing ASD behaviors only. To this end, we leverage one of the most popular object detection models YOLOv5, which is pretrained on the COCO dataset, as our target child detector (i.e., person detector). With the help of YOLOv5, we obtain the cropped frames of the target children and behaviors. As presented in Figure~\ref{preprocess}, the cropped frame is much more focused on the child region than the raw data, which leads to a more stable training process and better action recognition results. In addition, we segment each video into several 30-frame clips to extract as much information as possible, and this video segmentation setting also increases the number of training samples. Our final training data, therefore, contains 1,437 and 1,030 clips for ESBD and SSBD, respectively.
+            These two datasets are noisy and contain a large portion of the background or other subjects. To enhance recognition accuracy, we first preprocess the videos to obtain cleaner data that include target children performing ASD behaviors only. To this end, we leverage one of the most popular object detection models YOLOv5, which is pretrained on the COCO dataset, as our target child detector (i.e., person detector). With the help of YOLOv5, we obtain the cropped frames of the target children and behaviors. As presented below, the cropped frame is much more focused on the child region than the raw data, which leads to a more stable training process and better action recognition results. In addition, we segment each video into several 30-frame clips to extract as much information as possible, and this video segmentation setting also increases the number of training samples. Our final training data, therefore, contains 1,437 and 1,030 clips for ESBD and SSBD, respectively.
           </p>
           <img src="assets/preprocessing.png" alt="preprocess" width="77%">
           
@@ -200,52 +199,41 @@
   </section>
   <br>
 
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-            <h3>Method</h3>
-            <hr style="margin-top:0px">
-            <!-- <p>Repaint123 generates high-quality and view-consistent 3D objects from a single unposed image. </p> -->
-
-            <!-- <hr style="margin-top:0px">
-            <video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
-                <source src="video/gso.mp4" type="video/mp4">
-            </video>
-          <p class="text-left"> -->
-            
-          </p>
-        </div>
-      </div>
-      <div class="container align-items-center">
-        <div class="row">
-            <!-- Row 0 -->
-            <div class="col-sm-1 d-flex align-items-center justify-content-start p-0">
-                <div class="method-title">
-                    Input
-                </div>
+     <!-- <Performance> -->
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h3>Performance</h3>
+              <!-- <hr style="width:100%;height:0.7px;background-color:rgba(0, 0, 0, 0.665);margin-top:1em">
+                 Create high-fidelity 3D object mesh from a single image in <strong>5 SECONDS</strong>. -->
+                <hr style="margin-top:0px">
+                <!-- <h6 style="color:#8899a5"> Repaint123 crafts 3D content from a single image, matching 2D generation quality in just <strong>2 minutes</strong>. </h6> -->
+    
+                <br>
+              
+              <p class="text-left">
+                We propose to use detailed action descriptions as the textual input. Specifically, we first pre-define textural descriptions for the problem behavior classes by searching on the web and publications, as listed below. During training, when the visual branch takes as input a specific category of video, the corresponding action category description will be first tokenized into a language input tensor, and then the text encoder will encode the language input to a language feature.
+              </p>  
+              <img src="assets/text_tab.png" alt="text" width="90%">
+              <br>
+    
+              <p class="text-left">
+                In this work,  we utilize the CLIP text encoder as our text encoder. The original CLIP model consists of an image Transformer encoder and a text Transformer encoder and is trained on a large-scale image-text pairs dataset. The supervision contained in the natural language provides strong cross-modal representation ability for both CLIP encoders. In our work, in order to introduce additional supervision without bringing in extra annotations, we utilize the abundant image-text knowledge in the CLIP text encoder. As shown below, since the language feature from the text encoder actually contains sufficient corresponding visual information, we propose to minimize the distance between the visual feature from the Video Swin Transformer and the language feature in the feature space for the input visual and text pair. With such a strategy, the additional language knowledge is actually distilled into the visual branch, introducing more information for the recognition task and making the language feature more predictable.          
+              </p>  
+              <img src="assets/framework.png" alt="framework" width="90%">
+              <br>
+    
+            <p class="text-center">
+              <!-- Reverse process of SyncDreamer's multiview diffusion. -->
+              <!-- Overview of Our Repaint123. -->
+            </p>
             </div>
-            <div class="col-sm-2">
-                <img src="assets/videos/reference/cherry_1.png" alt="cherries" class="img-fluid " >
-            </div>
-            <div class="col-sm-2">
-                <img src="assets/videos/reference/horse_watercolor_2.png" alt="donuts" class="img-fluid " >
-            </div>
-            <div class="col-sm-2">
-                <img src="assets/videos/reference/hum.png" alt="hamburger" class="img-fluid "  >
-            </div>
-            <div class="col-sm-2">
-                <img src="assets/videos/reference/horse.png" alt="horse" class="img-fluid " >
-            </div>
-            <div class="col-sm-2">
-              <img src="assets/videos/reference/dragon_statue_2.png" alt="stone dragon statue" class="img-fluid " >
           </div>
-          <!-- <div class="col-sm-2">
-              <img src="assets/videos/reference/horse_watercolor_2.png" alt="watercolor horse" class="img-fluid " >
-          </div> -->
         </div>
+      </section>
+      <br>
         
-
 
   <!-- citing -->
   <div class="container">
@@ -254,14 +242,16 @@
           <h3>Citation</h3>
           <hr style="margin-top:0px">
               <pre style="background-color: #e9eeef;padding: 1.25em 1.5em">
-<code> @misc{zhang2023repaint123,
-      title={Repaint123: Fast and High-quality One Image to 3D Generation with Progressive Controllable 2D Repainting},
-      author={Junwu Zhang and Zhenyu Tang and Yatian Pang and Xinhua Cheng and Peng Jin and Yida Wei and Wangbo Yu and Munan Ning and Li Yuan},
-      year={2023},
-      eprint={2312.13271},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}</code>
+<code> @article{DENG2023100444,
+  title = {Language-assisted deep learning for autistic behaviors recognition},
+  journal = {Smart Health},
+  pages = {100444},
+  year = {2023},
+  issn = {2352-6483},
+  doi = {https://doi.org/10.1016/j.smhl.2023.100444},
+  url = {https://www.sciencedirect.com/science/article/pii/S2352648323000727},
+  author = {Andong Deng and Taojiannan Yang and Chen Chen and Qian Chen and Leslie Neely and Sakiko Oyama},
+  }</code>
               </pre>
           <hr>
       </div>
