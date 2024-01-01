@@ -199,40 +199,75 @@
   </section>
   <br>
 
-     <!-- <Performance> -->
-      <section>
-        <div class="container">
-          <div class="row">
-            <div class="col-12 text-center">
-              <h3>Performance</h3>
-              <!-- <hr style="width:100%;height:0.7px;background-color:rgba(0, 0, 0, 0.665);margin-top:1em">
-                 Create high-fidelity 3D object mesh from a single image in <strong>5 SECONDS</strong>. -->
-                <hr style="margin-top:0px">
-                <!-- <h6 style="color:#8899a5"> Repaint123 crafts 3D content from a single image, matching 2D generation quality in just <strong>2 minutes</strong>. </h6> -->
-    
-                <br>
-              
-              <p class="text-left">
-                As shown below, our methods surpass previous framework by a large margin on both datasets.
-              </p>  
-              <img src="assets/performance.png" alt="performance" width="90%">
+  <!-- <Performance> -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Performance</h3>
+          <!-- <hr style="width:100%;height:0.7px;background-color:rgba(0, 0, 0, 0.665);margin-top:1em">
+              Create high-fidelity 3D object mesh from a single image in <strong>5 SECONDS</strong>. -->
+            <hr style="margin-top:0px">
+            <!-- <h6 style="color:#8899a5"> Repaint123 crafts 3D content from a single image, matching 2D generation quality in just <strong>2 minutes</strong>. </h6> -->
+
+            <br>
+          
+          <p class="text-left">
+            As shown below, our methods surpass previous framework by a large margin on both datasets.
+          </p>  
+          <img src="assets/performance.png" alt="performance" width="90%">
+          <br>
+
+          <!-- <p class="text-left">
+            In this work,  we utilize the CLIP text encoder as our text encoder. The original CLIP model consists of an image Transformer encoder and a text Transformer encoder and is trained on a large-scale image-text pairs dataset. The supervision contained in the natural language provides strong cross-modal representation ability for both CLIP encoders. In our work, in order to introduce additional supervision without bringing in extra annotations, we utilize the abundant image-text knowledge in the CLIP text encoder. As shown below, since the language feature from the text encoder actually contains sufficient corresponding visual information, we propose to minimize the distance between the visual feature from the Video Swin Transformer and the language feature in the feature space for the input visual and text pair. With such a strategy, the additional language knowledge is actually distilled into the visual branch, introducing more information for the recognition task and making the language feature more predictable.          
+          </p>  
+          <img src="assets/framework.png" alt="framework" width="90%">
+          <br> -->
+
+        <p class="text-center">
+          <!-- Reverse process of SyncDreamer's multiview diffusion. -->
+          <!-- Overview of Our Repaint123. -->
+        </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+  <!-- <Vis> -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h3>Visualization</h3>
+            <!-- <hr style="width:100%;height:0.7px;background-color:rgba(0, 0, 0, 0.665);margin-top:1em">
+                Create high-fidelity 3D object mesh from a single image in <strong>5 SECONDS</strong>. -->
+              <hr style="margin-top:0px">
+              <!-- <h6 style="color:#8899a5"> Repaint123 crafts 3D content from a single image, matching 2D generation quality in just <strong>2 minutes</strong>. </h6> -->
+  
               <br>
-    
-              <!-- <p class="text-left">
-                In this work,  we utilize the CLIP text encoder as our text encoder. The original CLIP model consists of an image Transformer encoder and a text Transformer encoder and is trained on a large-scale image-text pairs dataset. The supervision contained in the natural language provides strong cross-modal representation ability for both CLIP encoders. In our work, in order to introduce additional supervision without bringing in extra annotations, we utilize the abundant image-text knowledge in the CLIP text encoder. As shown below, since the language feature from the text encoder actually contains sufficient corresponding visual information, we propose to minimize the distance between the visual feature from the Video Swin Transformer and the language feature in the feature space for the input visual and text pair. With such a strategy, the additional language knowledge is actually distilled into the visual branch, introducing more information for the recognition task and making the language feature more predictable.          
-              </p>  
-              <img src="assets/framework.png" alt="framework" width="90%">
-              <br> -->
-    
-            <p class="text-center">
-              <!-- Reverse process of SyncDreamer's multiview diffusion. -->
-              <!-- Overview of Our Repaint123. -->
-            </p>
-            </div>
+            
+            <p class="text-left">
+              Visualization of the attention map in the last attention layer of VST and VST+L. The first row of each case shows the attention map without language supervision (VST) and the second row shows the attention map with language supervision (VST+L).  Pixels with high attention values indicate regions that are most relevant to the final prediction. It is evident that using additional language supervision can make the model focus more on the relevant regions to the target action.
+            </p>  
+            <img src="assets/vis.png" alt="performance" width="90%">
+            <br>
+  
+            <!-- <p class="text-left">
+              In this work,  we utilize the CLIP text encoder as our text encoder. The original CLIP model consists of an image Transformer encoder and a text Transformer encoder and is trained on a large-scale image-text pairs dataset. The supervision contained in the natural language provides strong cross-modal representation ability for both CLIP encoders. In our work, in order to introduce additional supervision without bringing in extra annotations, we utilize the abundant image-text knowledge in the CLIP text encoder. As shown below, since the language feature from the text encoder actually contains sufficient corresponding visual information, we propose to minimize the distance between the visual feature from the Video Swin Transformer and the language feature in the feature space for the input visual and text pair. With such a strategy, the additional language knowledge is actually distilled into the visual branch, introducing more information for the recognition task and making the language feature more predictable.          
+            </p>  
+            <img src="assets/framework.png" alt="framework" width="90%">
+            <br> -->
+  
+          <p class="text-center">
+            <!-- Reverse process of SyncDreamer's multiview diffusion. -->
+            <!-- Overview of Our Repaint123. -->
+          </p>
           </div>
         </div>
-      </section>
-      <br>
+      </div>
+    </section>
+    <br>
         
 
   <!-- citing -->
