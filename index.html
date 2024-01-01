@@ -44,8 +44,8 @@
                 <a href="https://taoyang1122.github.io/" target="_blank">Taojiannan Yang</a><sup>1</sup>,
                 <a href="https://www.crcv.ucf.edu/chenchen/index.html" target="_blank">Chen Chen</a><sup>1</sup>,
                 <a href="https://klesse.utsa.edu/faculty/profiles/chen-qian.html" target="_blank">Qian Chen</a><sup>2</sup>,
-                <a href="" target="_blank">Leslie Neely</a><sup>2</sup>,
-                <a href="" target="_blank">Sakiko Oyama</a><sup>2</sup>,
+                <a href="https://www.abautsa.com/neely.html" target="_blank">Leslie Neely</a><sup>2</sup>,
+                <a href="https://hcap.utsa.edu/faculty/profiles/oyama-sakiko.html" target="_blank">Sakiko Oyama</a><sup>2</sup>,
             <p>  
                 <sup>1</sup>University of Central Florida &nbsp;&nbsp;
                 <sup>2</sup>University of Texas at San Antonio &nbsp;&nbsp;
@@ -213,16 +213,16 @@
                 <br>
               
               <p class="text-left">
-                We propose to use detailed action descriptions as the textual input. Specifically, we first pre-define textural descriptions for the problem behavior classes by searching on the web and publications, as listed below. During training, when the visual branch takes as input a specific category of video, the corresponding action category description will be first tokenized into a language input tensor, and then the text encoder will encode the language input to a language feature.
+                As shown below, our methods surpass previous framework by a large margin on both datasets.
               </p>  
-              <img src="assets/text_tab.png" alt="text" width="90%">
+              <img src="assets/performance.png" alt="performance" width="90%">
               <br>
     
-              <p class="text-left">
+              <!-- <p class="text-left">
                 In this work,  we utilize the CLIP text encoder as our text encoder. The original CLIP model consists of an image Transformer encoder and a text Transformer encoder and is trained on a large-scale image-text pairs dataset. The supervision contained in the natural language provides strong cross-modal representation ability for both CLIP encoders. In our work, in order to introduce additional supervision without bringing in extra annotations, we utilize the abundant image-text knowledge in the CLIP text encoder. As shown below, since the language feature from the text encoder actually contains sufficient corresponding visual information, we propose to minimize the distance between the visual feature from the Video Swin Transformer and the language feature in the feature space for the input visual and text pair. With such a strategy, the additional language knowledge is actually distilled into the visual branch, introducing more information for the recognition task and making the language feature more predictable.          
               </p>  
               <img src="assets/framework.png" alt="framework" width="90%">
-              <br>
+              <br> -->
     
             <p class="text-center">
               <!-- Reverse process of SyncDreamer's multiview diffusion. -->
